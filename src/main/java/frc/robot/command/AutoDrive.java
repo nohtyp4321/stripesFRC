@@ -2,7 +2,7 @@ package frc.robot.command;
 
 
 import edu.wpi.first.wpilibj.Timer;
-import frc.robot.subsystem.Drivetrain;
+import frc.robot.subsystems.Drivetrain;
 
 public class AutoDrive {
     Drivetrain drivetrain;

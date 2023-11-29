@@ -1,9 +1,8 @@
 package frc.robot.command;
 
-import frc.robot.subsystem.Drivetrain;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
+import frc.robot.subsystems.Drivetrain;
 
 public class Drive extends CommandBase { 
     Drivetrain drivetrain;
@@ -14,6 +13,8 @@ public class Drive extends CommandBase {
         drivetrain = a;
         leftJoystick = b;
         rightJoystick = c;
+        super.addRequirements(drivetrain);
+        drivetrain.setDefaultCommand(this);
     }
 
     public void execute() {

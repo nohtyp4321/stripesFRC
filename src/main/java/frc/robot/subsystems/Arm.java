@@ -1,16 +1,13 @@
-package frc.robot.subsystem;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class arm extends SubsystemBase {
+public class Arm extends SubsystemBase {
     VictorSP armVictor;
 
-
-    public arm() {
-
+    public Arm() {
         armVictor = new VictorSP(2);
-
     }  
     
     public void drive (double armSpeed) {

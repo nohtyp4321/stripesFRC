@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.command.AutoDrive;
+// import frc.robot.command.AutoDrive;
 import frc.robot.command.Drive;
-import frc.robot.subsystem.Drivetrain;
+import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Arm;
 
 
@@ -22,13 +22,12 @@ public class RobotContainer {
   JoystickButton raiseArm = new JoystickButton(left, 2);
   JoystickButton lowerArm = new JoystickButton(right, 2);
 
-  Command teleopCommand = new Drive(null, null, null);
+  Drive teleopCommand = new Drive(dt, left, right);
 
-  Drivetrain drivetrain = new Drivetrain();
   Arm arm = new Arm();
 
   public RobotContainer() {
-    drivetrain.setDefaultCommand(new InstantCommand(() -> drivetrain.drive(left.getY(), right.getY())));
+    dt.setDefaultCommand(teleopCommand);
     configureBindings();
   }
 
@@ -41,7 +40,7 @@ public class RobotContainer {
     return Commands.print("No autonomous command configured");
   }
 
-  public Command getTeleopCommand() {
-    return teleopCommand;
-  }
+  // public Command getTeleopCommand() {
+  //   return teleopCommand;
+  // }
 }
