@@ -1,29 +1,25 @@
 package frc.robot.command;
 
-
-import edu.wpi.first.wpilibj.Timer;
 import frc.robot.subsystems.Drivetrain;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class AutoDrive {
+public class AutoDrive extends CommandBase{
     Drivetrain drivetrain;
-    Timer timer;
     double leftSpeed;
     double rightSpeed;
-    double time;
+    
 
 
-    public AutoDrive(Drivetrain dt, double ls, double rS, double t) {
+    public AutoDrive(Drivetrain dt, double ls, double rS) {
         drivetrain = dt;
         leftSpeed = ls;
         rightSpeed = rS;
-        timer = new Timer();
-        time = t;
-  
+        
+        addRequirements(drivetrain);
     }
 
     public void initialize() {
-        timer.reset();
-        timer.start();
+        drivetrain.stop();
     }
 
     public void execute() {
@@ -31,11 +27,12 @@ public class AutoDrive {
     }
 
     public boolean isFinished() {
-        return timer.get() > time;
+        return false;
+        
     }
 
     public void end(boolean stop) {
-
+        drivetrain.stop();
     }
 
 }
